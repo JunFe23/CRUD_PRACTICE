@@ -3,5 +3,7 @@
 
 # 2021. 05. 16
 내용 : 로그인, 게시판 CRUD, 페이징, 스크랩 기능
+
 개발인원 : 1명
-개발 환경 : JSP, javascript, jquery, oracle database 19c
+
+개발 환경 : JSP, javascript, jquery, mybatis, oracle database 19c
