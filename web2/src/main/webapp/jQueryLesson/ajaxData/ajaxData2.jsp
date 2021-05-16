@@ -1,0 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>    
+In a joint announcement Sunday night, six English clubs -- Arsenal, Chelsea, Liverpool, Manchester City, Manchester United, and Tottenham Hotspur -- alongside three teams from Italy -- AC Milan, Inter Milan and Juventus -- and three from Spain -- Atlético Madrid, Barcelona and Real Madrid -- laid out plans to form a breakaway competition, referred to in the announcement as the Super League.
+The group plans to add three additional clubs before the Super League's inaugural season, which is "intended to commence as soon as is practiceable," according to the announcement posted on the 12 clubs' websites.

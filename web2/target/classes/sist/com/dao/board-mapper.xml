@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sist.com.bean.board">
+   <select id="idMvcBoardCheck" resultType="String" parameterType="String">
+   		SELECT PASSWORD FROM MVCMEMBER WHERE ID=#{VALUE}     
+   </select>   
+   
+   <insert id="insertBoardMvc" parameterType="mBoard">
+   		INSERT INTO MVCSPRING VALUES(MVCSPRING_SEQ.NEXTVAL,
+   		#{id},#{password},#{title},#{writer},#{contents},0,#{fileName},SYSDATE)  
+   </insert> 
+   
+   
+  <select id="selectMvcBoard" resultType="mBoard" parameterType="java.util.HashMap">   
+		SELECT * FROM(
+		SELECT /*+INDEX_DESC(MVCSPRING MVCSPRING_NO_PK) */ ROWNUM RM, NO ,ID,TITLE,WRITER,HIT,NVL(FILENAME,'noimg.jpg')FILENAME,PASSWORD,CONTENTS,
+		TO_CHAR(REGDATE,'YYYY/MM/DD')REGDATE
+		FROM MVCSPRING
+		<where>
+	     <choose>
+	       <when test="ck!=null">
+	       
+	        NO IN
+	         <foreach collection="ck" index="index" open="(" close=")" separator="," item="n">
+	             #{n}         
+	         </foreach>
+	       </when>     
+	     </choose>   
+	     </where>
+		)
+		WHERE RM BETWEEN #{start} AND #{end}	   
+   </select>  
+   
+  <select id="getRowCount" resultType="int">
+  	SELECT COUNT(*) FROM MVCSPRING
+  </select>
+
+   
+   <select id="selectInfoBoard" parameterType="java.util.HashMap" resultType="mBoard">
+	   SELECT NO,ID,TITLE,WRITER,HIT,NVL(FILENAME,'noimg.png')FILENAME,PASSWORD,CONTENTS,
+	   TO_CHAR(REGDATE,'YYYY/MM/DD')REGDATE
+	   FROM MVCSPRING
+	   WHERE NO=#{no}   
+   </select>
+   
+   <update id="updateHitBoard" parameterType="int">
+	    UPDATE MVCSPRING SET HIT=HIT+1 
+	    WHERE NO=#{VALUE}
+   </update>
+   
+   
+   <select id="idCheckValue" parameterType="String" resultType="String">
+   		SELECT INFOIX FROM MVCINFODATA
+   		WHERE ID=#{value}
+   </select>
+   
+   <insert id="insertIdCheckValue" parameterType="java.util.HashMap">
+   		INSERT INTO MVCINFODATA VALUES(#{id}, #{infoIx})
+   </insert>
+   
+   <update id="updateIdCheckValue" parameterType="java.util.HashMap">
+   		UPDATE MVCINFODATA SET INFOIX=#{infoIx}
+   		WHERE ID=#{id}
+   </update>
+   
+   <select id="selectGetId" parameterType="String" resultType="String">
+     SELECT ID FROM MVCINFODATA WHERE ID=#{VALUE}  
+   </select>
+   
+   <select id="getAjaxReplySequence" resultType="java.lang.Integer">
+     SELECT REPLYAJAX_SEQ.NEXTVAL FROM DUAL
+   
+   </select>
+
+   <insert id="insertAjaxReply" parameterType="replyBean">
+     INSERT INTO REPLYAJAX VALUES(#{no},
+     #{contents},#{id},#{step},#{lev},#{ref},#{pnum},0,'noimg.jpg',sysdate,#{infoPk})   
+   </insert>
+   
+   <select id="selectAjaxList" resultType="replyBean">
+   SELECT NO, CONTENTS, ID, STEP, LEV, REF, PNUM, REPLY, IMG,
+   TO_CHAR(REGDATE,'YYYY/MM/DD')REGDATE 
+   FROM REPLYAJAX
+   ORDER BY REF DESC,STEP ASC
+   </select>
+   
+   <delete id="deleteAjax" parameterType="int">
+   DELETE FROM REPLYAJAX WHERE NO = #{VALUE}
+   </delete>
+   
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

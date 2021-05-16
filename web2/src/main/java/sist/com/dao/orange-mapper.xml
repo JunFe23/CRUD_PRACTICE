@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sist.com.bean.crud"> 
+
+   <select id="empListAction" resultType="java.util.HashMap">
+     SELECT * FROM EMP   
+   </select> 
+   
+   <select id="deptListAction" resultType="java.util.HashMap">
+    <![CDATA[ SELECT * FROM DEPT ]]>
+    
+   <where>
+   <choose>
+     <when test="state!=null and state=='big'">
+        DEPTNO >=20 
+     </when>
+     <otherwise>
+      <![CDATA[  DEPTNO <= 20]]>
+     </otherwise>
+   </choose>
+   </where>
+   
+   </select>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

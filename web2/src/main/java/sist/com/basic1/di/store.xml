@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		
+	<context:annotation-config/>	
+	<context:component-scan base-package="sist/com/basic1/di"></context:component-scan>	
+	<bean id="book1" class="sist.com.basic1.di.Book" scope="singleton" init-method="initBook" destroy-method="destoryBook">
+	<qualifier value="qb1" type="org.springframework.beans.factory.annotation.Qualifier"></qualifier>
+	  <property name="author" value="정연"></property>
+	  <property name="bookName" value="정연요리"></property>
+	  <property name="price" value="50000"></property>
+	  <property name="publisher" value="삼성출판"></property>
+	
+	</bean>
+	<bean id="book2" class="sist.com.basic1.di.Book" scope="singleton" init-method="initBook" destroy-method="destoryBook">
+	 <qualifier value="qb2" type="org.springframework.beans.factory.annotation.Qualifier"></qualifier>
+	  <property name="author" value="수정"></property>
+	  <property name="bookName" value="수정요리"></property>
+	  <property name="price" value="50000"></property>
+	  <property name="publisher" value="쌍용출판"></property>
+	
+	</bean>
+	
+
+
+</beans>

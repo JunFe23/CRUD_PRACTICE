@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	<bean id="person1" class="sist.com.basic1.di.Person" scope="singleton">
+	  <property name="name" value="찬미"></property>	  
+	</bean>	
+		
+	<bean id="person2" class="sist.com.basic1.di.Person" scope="prototype" p:name="성빈" p:addr="서울시" p:age="20" p:height="178" ></bean>
+	
+	
+	
+	
+	
+	
+	<bean id="person3" class="sist.com.basic1.di.Person" scope="singleton">
+	  <constructor-arg name="name" value="원겸"></constructor-arg>
+	  <constructor-arg name="age" value="29"></constructor-arg>
+	</bean>
+	
+	<bean id="room1" class="sist.com.basic1.di.Room">
+	  <property name="list">
+	    <list>
+	       <ref bean="person1"/>
+	       <ref bean="person2"/>
+	       <ref bean="person3"/>
+	    </list>
+	  </property>
+	   <property name="set">
+	    <set>
+	    <ref bean="person1"/>
+	    <ref bean="person2"/>
+	    <ref bean="person3"/>
+	    </set>	    
+	  </property>
+	</bean>
+	<bean id="room2" class="sist.com.basic1.di.Room" scope="prototype">
+	  <property name="list">
+	    <list>
+	       <ref bean="person1"/>
+	       <ref bean="person2"/>
+	       <ref bean="person3"/>
+	       <ref bean="person1"/>
+	       <ref bean="person2"/>
+	       <ref bean="person3"/>
+	    </list>
+	  </property>
+	  <property name="set">
+	    <set>
+	    <ref bean="person1"/>
+	    <ref bean="person2"/>
+	    <ref bean="person1"/>
+	    </set>	    
+	  </property>
+	</bean>
+	
+	<bean id="room3" class="sist.com.basic1.di.Room">
+	 <property name="properties">	 
+	    <props>
+	       <prop key="211.63.89.100">
+	        LOGIN	         
+	       </prop>
+	       <prop key="211.63.89.101">
+	        MEMBERLIST	         
+	       </prop>
+	       <prop key="211.63.89.102">
+	        DELETELIST	         
+	       </prop>
+	    </props>
+	 </property>
+	  <property name="map">
+	    <map>
+	      <entry>
+	        <key>
+	         <value>1</value>
+	        </key>
+	        <ref bean="person1"/>
+	      </entry>
+	      <entry>
+	        <key>
+	         <value>2</value>
+	        </key>
+	        <ref bean="person2"/>
+	      </entry>
+	      <entry>
+	        <key>
+	         <value>3</value>
+	        </key>
+	        <ref bean="person3"/>
+	      </entry>
+	    </map>
+	  </property>
+	</bean>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

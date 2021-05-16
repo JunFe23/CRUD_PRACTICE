@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("button#connect").click(function(){
+		document.location.href='/web/connectDemo.do'
+	});
+	
+	$("button#empSelect").click(function(){
+		document.location.href='/web/empListData.do'
+	});
+});
+</script>
+</head>
+<body>
+  <button id="connect">ConnectDemo</button>
+  <button id="empSelect">EmpSelect</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
