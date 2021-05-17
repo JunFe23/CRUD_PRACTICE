@@ -7,3 +7,6 @@
 개발인원 : 1명
 
 개발 환경 : JSP, javascript, jquery, mybatis, oracle database 19c
+
+# 2021. 05. 17
+ajax를 이용한 마이페이지 구현.
